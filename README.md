@@ -47,3 +47,35 @@ Foi utilizado a biblioteca datetime para trazer da coluna Data, apenas os meses 
 
 clientes['renda'] = clientes['renda'].astype(float)
 Alteração do tipo de dados da coluna renda para float
+
+vendas_cliente = preço_correto.merge(clientes,how='left', on='cliente_Log')
+merge é fazer um join para união das duas tabelas, on é a chave igual entre as duas tabelas.
+
+
+Gráficos.
+
+fig = plt.figure(figsize=(4,3))   # tamanho da figura
+plt.bar(idade_por_bandeira['bandeira'],idade_por_bandeira['idade'],color='green')  # tipo de gráfico
+plt.xlabel('Bandeira') # nome do eixo x
+plt.ylabel('Média de Idade') # nome do eixo y
+plt.title('Idade Média por Bandeira',loc='center',fontsize=15, fontweight = 'bold', color='black');  # configurações do Título
+
+
+fig = plt.figure(figsize=(14,6)) # tamanho da figura
+plt.xlabel('Data da venda') # nome do eixo x
+plt.ylabel('Qtd. de vendas') # nome do eixo y
+x= vendas_por_data['Data'] # variável para o eixo x
+y= vendas_por_data['idcompra'] # variável para o eixo y
+plt.plot(x,y, color='black' , linewidth ='2')  # tipo de gráfico
+plt.show()  # Comando para exibir
+
+
+utilizando a biblioteca do plotly
+Exemplo 1 :
+px.bar (idade_por_bandeira , x='bandeira',y='idade' ) 
+
+Exemplo 2 :
+px.line(vendas_por_data,x='Data',y='idcompra')
+
+Exemplo 3 :
+px.bar(média_por_departamento,x='Nome_Departamento',y='Preço_com_frete')
