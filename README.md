@@ -17,3 +17,12 @@ idade_por_bandeira= round(vendas_cliente.groupby('bandeira')['idade'].mean().sor
 
 Todas as vendas sem UF , devem ser substituídas por 'MS'
 Preço não pode ser menor que preço com frete.
+
+
+Funções para relembrar 
+
+vendas.groupby('idcanalvenda').idcompra.nunique()
+Groupby realiza o agrupamento , já o nunique conta os valores distintos , nesse caso está utilizando a coluna idcompra para isso.
+
+vendas['idcanalvenda'].str.replace ('APP','Aplicativo') 
+O .str é utilizado porque a coluna tem como tipo Object , e porque permite a utilização dos métodos em string, como o replace. Trocando APP por Aplicativo.
