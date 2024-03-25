@@ -26,3 +26,24 @@ Groupby realiza o agrupamento , já o nunique conta os valores distintos , nesse
 
 vendas['idcanalvenda'].str.replace ('APP','Aplicativo') 
 O .str é utilizado porque a coluna tem como tipo Object , e porque permite a utilização dos métodos em string, como o replace. Trocando APP por Aplicativo.
+
+vendas['Nome_Departamento'] = vendas['Nome_Departamento'].str.replace(' ','_').str.replace(',','')
+usando 2 condições para replace,  ' ' por _ e , por ''
+
+vendas[vendas['estado'].isnull()]
+Aqui vemos as células sem valor em estado.
+
+vendas['estado']= vendas['estado'].fillna('MS')
+Aqui preenchemos os valores nulos por 'MS' utilizando fillna
+
+vendas['Preço'].fillna(media_precos,inplace=True)
+Aqui utilizamos uma variável para preencher os nulos , o inplace=True serve para substituir direto na base vendas.
+
+preço_errado = vendas.query("Preço>Preço_com_frete")
+Utilizando .query para filtrar de acordo com a condição passada.
+
+preço_correto["mes"] = preço_correto["Data"].dt.month
+Foi utilizado a biblioteca datetime para trazer da coluna Data, apenas os meses e criar uma coluna 'mes'
+
+clientes['renda'] = clientes['renda'].astype(float)
+Alteração do tipo de dados da coluna renda para float
